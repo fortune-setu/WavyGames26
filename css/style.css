@@ -1,0 +1,162 @@
+/* Blurred background images */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    position: relative;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Background layer */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url("../images/waves.jpg") center / cover no-repeat;
+    filter: blur(8px);
+    transform: scale(1.1); /* prevents blur edge gaps */
+    z-index: -2;
+}
+
+/* dark overlay for readability */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 20, 60, 0.55);
+    z-index: -1;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+
+header {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+}
+
+/* main layout */
+.container {
+    display: flex;
+    min-height: calc(100vh - 140px);
+}
+
+/*side menu */
+nav {
+    width: 220px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 20px;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.25);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    margin-bottom: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    display: block;
+    padding: 10px;
+    border-radius: 6px;
+    transition:
+        background 0.2s ease,
+        transform 0.1s ease;
+}
+
+nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(4px);
+}
+
+/*content space*/
+main {
+    flex: 1;
+    padding: 30px;
+}
+
+.content-card {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.description {
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+/*Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+th,
+td {
+    padding: 12px 14px;
+    text-align: left;
+}
+
+th {
+    background: #111111;
+    color: #ffffff;
+    font-weight: 700;
+}
+
+tbody tr:nth-child(odd) {
+    background: #2b2b2b;
+}
+
+tbody tr:nth-child(even) {
+    background: #1a1a1a;
+}
+
+tbody tr {
+    transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+    background: #0036b3;
+}
+
+footer {
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    nav {
+        width: 100%;
+        box-shadow: none;
+    }
+}
